@@ -1,6 +1,6 @@
 .welcomText {
 	font-weight : 700;
-	text-shadow: 1px 1px 6px #FFFFFF;
+	text-shadow: 2px 4px 5px rgba(0,0,0,.35)
 }
 
 .topnav{
@@ -11,7 +11,8 @@
 }
 
 .parallax-container {
-	height : 550px;
+/* 	height : 900px; */
+	background:rgba(0,0,0,.2);
 }
 .dropdown-content{
 	background-color: rgba(0,0,0,0.6);
@@ -27,4 +28,12 @@
   .nav-wrapper {
    margin: 0 150px 0 150px
   }
+}
+
+.main_img{
+	width: 100px;
+}
+.promo-caption{
+	font-weight : 700;
+	font-size : 1.5rem;
 }

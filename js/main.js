@@ -1,7 +1,5 @@
 $(document).ready(function(){
-      $('.parallax').parallax({
-    	speed : 0.9
-      });
+      $('.parallax').parallax();
       $('.button-collapse').sideNav();
       $('.dropdown-button').dropdown({
           inDuration: 300,
