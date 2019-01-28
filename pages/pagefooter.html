@@ -2,24 +2,59 @@
 <div class="container">
 	<div class="row">
 		<div class="col l6 s12">
-			<h5 class="">Footer Content</h5>
-			<p class="text-lighten-4">You can use rows and columns here to
-				organize your footer content.</p>
+			<h5 class="">Enjoy Cebu Diving Co.</h5>
+			<p class="text-lighten-4">책임강사 김성국</p>
+			<p class="text-lighten-4">Tel. 070-8625-6290</p>
+			<p class="text-lighten-4">Kakao. jcebu</p>
+			<p class="text-lighten-4">Location. Datag, Maribago, Lapu-Lapu City, Cebu, Philippines</p>
 		</div>
 		<div class="col l4 offset-l2 s12">
 			<h5 class="">Links</h5>
 			<ul>
-				<li><a class="text-lighten-3" href="#!">Link 1</a></li>
-				<li><a class="text-lighten-3" href="#!">Link 2</a></li>
-				<li><a class="text-lighten-3" href="#!">Link 3</a></li>
-				<li><a class="text-lighten-3" href="#!">Link 4</a></li>
+				<li><a class="text-lighten-3 footer-about" >AboutEnjoyCebuDiving</a></li>
+				<li><a class="text-lighten-3 footer-learn" href="#!">LearnDiving</a></li>
+				<li><a class="text-lighten-3 footer-fun" href="#!">FunDiving</a></li>
+				<li><a class="text-lighten-3 footer-location" href="#!">Location</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
 <div class="footer-copyright">
 	<div class="container">
-		© 2014 Copyright Text <a class="grey-text text-lighten-4 right"
+		© 2019 Enjoy Cebu Diving <a class="grey-text text-lighten-4 right"
 			href="#!">More Links</a>
 	</div>
 </div>
+
+<script>
+
+
+	$('.footer-about').click(function() {
+		pagemove('aboutus.html')
+	});
+	$('.footer-learn').click(function(){
+		pagemove('divingfee.html')
+	});
+	$('.footer-fun').click(function(){
+		pagemove('fundivingfee.html')
+	});
+	$('.footer-location').click(function(){
+		pagemove('location.html')
+	})
+
+	var pagemove = function(target) {
+		var pagePath = $(location).attr("pathname");
+		
+		var path
+
+		if (pagePath == '/index.html' || pagePath == '/') {
+			path = 'pages/' + target
+		} else {
+			path = target
+		}
+		window.location = path;
+
+	}
+	
+	
+	</script>

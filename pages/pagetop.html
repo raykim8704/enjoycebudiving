@@ -1,68 +1,160 @@
-
 <nav class="transparent topnav">
+			<div class="nav-wrapper">
+				 <a href="#!" class="brand-logo">EnjoyCebuDive</a>
+				 <a href="#"data-target="mobile-demo" class="sidenav-trigger">
+					<i class="material-icons">menu</i></a>
+				<!--  topMenu for screen  -->
+				<ul class="right hide-on-med-and-down">
+					<li><a class="menu-home">Home</a></li>
+					<!-- Dropdown Trigger -->
+					<li><a class='dropdown-trigger' href='#'
+						data-target='dropdown1'>ABOUT <i class="material-icons right">arrow_drop_down</i>
+					</a> <!-- Dropdown Structure -->
+						<ul id='dropdown1' class='dropdown-content'>
+							<li><a class="menu-aboutcebuenjoy">ABOUT 즐세다</a></li>
+							<li><a class="menu-cafe">즐세다 카페</a></li>
+						</ul></li>
 
-	<!-- Dropdown Structure -->
-
-
-	<div class="nav-wrapper">
-		<ul id="dropdown1" class="dropdown-content ">
-			<li><a href="aboutus.html">ABOUT 즐세다</a></li>
-			<li><a href="#!">즐세다 카페</a></li>
-		</ul>
-		<ul id="dropdown2" class="dropdown-content ">
-			<li><a href="#!">체험 DIVING COURSES</a></li>
-			<li><a href="openwater.html">OPEN WATER DIVING COURSES</a></li>
-			<li><a href="advanced.html">ADVANCED DIVING COURSES</a></li>
-			<li><a href="#!">RESCUE DIVING COURSES</a></li>
-			<li><a href="#!">PRO DIVING COURSES</a></li>
-		</ul>
-		<a href="#!" class="brand-logo">Logo</a> <a href="#" data-activates="slide-out" class="button-collapse">
-		 <i class="material-icons">menu</i></a>
-		<ul class="right hide-on-med-and-down">
-			<li><a href="../index.html">Home</a></li>
-			<!-- Dropdown Trigger -->
-			<li><a class="dropdown-button" href="#!" data-activates="dropdown1">About<i class="material-icons right">arrow_drop_down</i></a></li>
-
-			<li><a class="dropdown-button" href="#!" data-activates="dropdown2">교육 DIVING<i class="material-icons right">arrow_drop_down</i></a></li>
-			<li><a href="collapsible.html">FUN DIVING</a></li>
-			<li><a href="collapsible.html">DIVING PRICE</a></li>
-			<li><a href="mobile.html">LOCATION</a></li>
-		</ul>
-
-		<ul id="slide-out" class="side-nav">
-			<li><a href="#!">First Sidebar Link</a></li>
-			<li><a href="#!">Second Sidebar Link</a></li>
-			<li class="no-padding">
-				<ul class="collapsible collapsible-accordion">
-					<li><a class="collapsible-header">Dropdown<i
-							class="material-icons">arrow_drop_down</i></a>
-						<div class="collapsible-body">
-							<ul>
-								<li><a href="#!">First</a></li>
-								<li><a href="#!">Second</a></li>
-								<li><a href="#!">Third</a></li>
-								<li><a href="#!">Fourth</a></li>
-							</ul>
-						</div></li>
+					<li><a class='dropdown-trigger' href='#'
+						data-target='dropdown2'>교육 DIVING <i
+							class="material-icons right">arrow_drop_down</i>
+					</a> <!-- Dropdown Structure -->
+						<ul id='dropdown2' class='dropdown-content'>
+							<li><a class="menu-discover">체험 DIVING COURSES</a></li>
+							<li><a class="menu-openwater">OPEN WATER DIVING COURSES</a></li>
+							<li><a class="menu-advanced">ADVANCED DIVING COURSES</a></li>
+							<li><a class="menu-rescue">RESCUE DIVING COURSES</a></li>
+							<li><a class="menu-pro">PRO DIVING COURSES</a></li>
+						</ul></li>
+					<li><a class="menu-fundiving">FUN DIVING</a></li>
+					
+					<li><a class='dropdown-trigger' href='#'
+						data-target='dropdown3'>DIVING PRICE<i
+							class="material-icons right">arrow_drop_down</i>
+					</a> <!-- Dropdown Structure -->
+						<ul id='dropdown3' class='dropdown-content'>
+							<li><a class="menu-edu-price">교육 DIVING PRICE</a></li>
+							<li><a class="menu-fun-price">FUN DIVING PRICE</a></li>
+						</ul></li>
+					<li><a class="menu-location">LOCATION</a></li>
 				</ul>
+			</div>
+			<!--  side menu for mobile -->
+	<ul class="sidenav" id="mobile-demo">
+	   <li><a class="menu-home">HOME</a></li>
+		<li class="no-padding  blue lighten-5">
+			<ul class="collapsible collapsible-accordion">
+			
+			<li><a class="collapsible-header">ABOUT<i class="material-icons">arrow_drop_down</i></a>
+					<div class="collapsible-body">
+						<ul>
+							<li><a class="menu-aboutcebuenjoy">ABOUT 즐세다</a></li>
+							<li><a class="menu-cafe">즐세다 카페</a></li>
+						</ul>
+					</div>
 			</li>
-			<li class="no-padding">
-				<ul class="collapsible collapsible-accordion">
-					<li><a class="collapsible-header">Dropdown2<i
-							class="material-icons">arrow_drop_down</i></a>
-						<div class="collapsible-body">
-							<ul>
-								<li><a href="#!">First2</a></li>
-								<li><a href="#!">Second2</a></li>
-								<li><a href="#!">Third2</a></li>
-								<li><a href="#!">Fourth2</a></li>
-							</ul>
-						</div></li>
-				</ul>
+			</ul>
+		</li>
+		<li class="no-padding  blue lighten-5">
+			<ul class="collapsible collapsible-accordion">
+			<li><a class="collapsible-header">교육 DIVING<i class="material-icons">arrow_drop_down</i></a>
+					<div class="collapsible-body">
+						<ul>
+							<li><a class="menu-discover">체험 DIVING COURSES</a></li>
+							<li><a class="menu-openwater">OPEN WATER DIVING COURSES</a></li>
+							<li><a class="menu-advanced">ADVANCED DIVING COURSES</a></li>
+							<li><a class="menu-rescue">RESCUE DIVING COURSES</a></li>
+							<li><a class="menu-pro">PRO DIVING COURSES</a></li>
+						</ul>
+					</div>
 			</li>
-		</ul>
-
-
-
-	</div>
+			</ul>
+		</li>
+		<li><a class="menu-fundiving">FUN DIVING</a></li>
+		<li class="no-padding  blue lighten-5">
+			<ul class="collapsible collapsible-accordion">
+			<li><a class="collapsible-header">DIVING PRICE<i class="material-icons">arrow_drop_down</i></a>
+					<div class="collapsible-body">
+						<ul>
+							<li><a class="menu-edu-price">교육 DIVING PRICE</a></li>
+							<li><a class="menu-fun-price">FUN DIVING PRICE</a></li>
+						</ul>
+					</div>
+			</li>
+			</ul>
+		</li>
+		<li><a class="menu-location">LOCATION</a></li>
+	</ul>
 </nav>
+<script>
+
+
+	$('.sidenav').sidenav();
+	$('.dropdown-trigger').dropdown({
+
+		hover : true,
+		constrainWidth : false
+	});
+	$('.collapsible').collapsible();
+	$('.menu-home').click(function() {
+		var pagePath = $(location).attr("pathname");
+		var path
+
+		if (pagePath == '/enjoycebu/index.html') {
+			path = 'index.html'
+		} else {
+			path = '../index.html'
+		}
+		window.location = path;
+	});
+	
+	$('.menu-cafe').click(function(){
+		window.open('https://cafe.naver.com/enjoycebudiving');
+	})
+	$('.menu-aboutcebuenjoy').click(function() {
+		pagemove('aboutus.html')
+	});
+	$('.menu-discover').click(function(){
+		pagemove('discover.html')
+	})
+	$('.menu-openwater').click(function(){
+		pagemove('openwater.html')
+	});
+	$('.menu-advanced').click(function(){
+		pagemove('advanced.html');
+	});
+	$('.menu-rescue').click(function(){
+		pagemove('rescue.html')
+	});
+	$('.menu-fundiving').click(function(){
+		pagemove('fundive.html')
+	});
+	$('.menu-edu-price').click(function(){
+		pagemove('divingfee.html')
+	});
+	$('.menu-fun-price').click(function(){
+		pagemove('fundivingfee.html')
+	});
+	$('.menu-location').click(function(){
+		pagemove('location.html')
+	});
+	$('.menu-pro').click(function(){
+		pagemove('pro.html')
+	})
+
+	var pagemove = function(target) {
+		var pagePath = $(location).attr("pathname");
+		
+		var path
+
+		if (pagePath == '/index.html' || pagePath =='/') {
+			path = 'pages/' + target
+		} else {
+			path = target
+		}
+		window.location = path;
+
+	}
+	
+
+</script>
