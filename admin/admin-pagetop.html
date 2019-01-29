@@ -1,0 +1,55 @@
+<nav class="transparent topnav">
+			<div class="nav-wrapper">
+				 <a href="#!" class="brand-logo">ADMIN</a>
+				 <a href="#"data-target="mobile-demo" class="sidenav-trigger">
+					<i class="material-icons">menu</i></a>
+				<!--  topMenu for screen  -->
+				<ul class="right hide-on-med-and-down">
+					<li><a class="menu-instructor">강사추가</a></li>
+					<li><a class="menu-popup">팝업추가</a></li>
+					<li><a class="menu-price">다이빙 비용 관리</a></li>
+				</ul>
+			</div>
+			<!--  side menu for mobile -->
+	<ul class="sidenav" id="mobile-demo">
+    <li><a class="menu-instructor">강사추가</a></li>
+    <li><a class="menu-popup">팝업추가</a></li>
+    <li><a class="menu-price">다이빙 비용 관리</a></li>
+	</ul>
+</nav>
+<script>
+
+
+	$('.sidenav').sidenav();
+	$('.dropdown-trigger').dropdown({
+
+		hover : true,
+		constrainWidth : false
+	});
+	$('.collapsible').collapsible();
+	$('.menu-instructor').click(function() {
+    pagemove('instructor.html')
+	});
+	$('.menu-popup').click(function(){
+		pagemove('fundive.html')
+	});
+	$('.menu-price').click(function(){
+		pagemove('price.html')
+	});
+
+	var pagemove = function(target) {
+		var pagePath = $(location).attr("pathname");
+
+		var path
+
+		if (pagePath == '/index.html' || pagePath =='/') {
+			path = 'pages/' + target
+		} else {
+			path = target
+		}
+		window.location = path;
+
+	}
+
+
+</script>
