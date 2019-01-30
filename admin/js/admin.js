@@ -1,3 +1,4 @@
+var db;
 $(document).ready(function(){
   $('.parallax').parallax({
   });
@@ -10,30 +11,43 @@ function setInterface(){
   $('#login-btn').click(function(){
     var userid = $('#userid').val().trim();
     var userpw = $('#userpw').val().trim();
-    if (  validationCheck(userid, userpw) ){
 
+    if (  validationCheck(userid, userpw) ){
+      showMainloader();
       firebase.auth().signInWithEmailAndPassword(userid,userpw).then(function(){
-        // pagemove('manageinst.html');
-        console.log(user)
+        console.log('들어오나');
+         hideMainloader();
+         setFirebase();
       }).catch(function(error) {
-        Swal.fire({
-          title: 'Error!',
-          text: '아이디와 비밀번호를 확인해 주세요',
-          type: 'error',
-          confirmButtonText: 'OK'
-        });
+        hideMainloader();
+        fireswal('ERROR!', '아이디와 비밀번호를 다시 확인해 주세요.','error','OK')
+        console.log(error)
       });
     }else {
+        showMainloader();
+        fireswal('ERROR!', 'fail to validation check','error','OK')
 
     }
 
   })
 }
 
-function setFirebase(){
-  var user = firebase.auth().currentUser;
+function fireswal(title,text,type,confirmButtonText){
+  Swal.fire({
+    title: title,
+    text: text,
+    type: type,
+    confirmButtonText: confirmButtonText
+  });
+}
 
+function setFirebase(){
+
+  var user = firebase.auth().currentUser;
+ hideMainloader();
   if (user) {
+    // setUserToFirebase(user)
+    getUserAuth(user);
     console.log(user)
     // pagemove('manageinst.html');
   } else {
@@ -43,27 +57,35 @@ function setFirebase(){
 
 }
 
+function getUserAuth(user){
+  
+}
+
+function setUserToFirebase(user){
+  db = firebase.firestore();
+  dbRef = db.collection("users").doc('admin');
+  dbRef.set({
+    uid: user.uid,
+    email: user.email,
+    auth: 'admin'
+})
+.then(function(docRef) {
+    console.log("Document written with ID: ", docRef);
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+});
+}
 
 function validationCheck(userid, userpw){
   if (userid == ''){
-    Swal.fire({
-      title: 'Error!',
-      text: '아이디를 입력해주세요',
-      type: 'error',
-      confirmButtonText: 'OK'
-    });
+    fireswal('Error!','아이디를 입력해주세요','error','OK');
     return false;
   }
   if (userpw == '') {
-    Swal.fire({
-      title: 'Error!',
-      text: '비밀번호를 입력해주세요',
-      type: 'error',
-      confirmButtonText: 'OK'
-    });
+    fireswal('Error!','비밀번호를 입력해주세요','error','OK')
     return false;}
     return true;
-
   }
 
 
