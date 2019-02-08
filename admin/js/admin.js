@@ -2,12 +2,13 @@ var db;
 $(document).ready(function(){
   $('.parallax').parallax({
   });
+  $('.sidenav').sidenav();
   hideMainloader();
   setFirebase();
   setInterface();
 });
 function setInterface(){
-  $('#pagehead').load('admin-pagetop.html');
+
   $('#login-btn').click(function(){
     var userid = $('#userid').val().trim();
     var userpw = $('#userpw').val().trim();
@@ -54,11 +55,9 @@ function setFirebase(){
     console.log('no signed user')
   }
 
-
 }
 
 function getUserAuth(user){
-  
 }
 
 function setUserToFirebase(user){
