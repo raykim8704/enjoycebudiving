@@ -58,6 +58,16 @@ function setFirebase(){
 }
 
 function getUserAuth(user){
+  db = firebase.firestore();
+  var authRef = db.collection("users");
+  var query = authRef.where("email", "==", user.email);
+  query.get().then(function(doc){
+    console.log(doc.data())
+  }).catch(function(error){
+    console.log("error",error)
+  })
+
+
 }
 
 function setUserToFirebase(user){
