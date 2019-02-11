@@ -4,7 +4,7 @@ $(document).ready(function(){
   });
   $('.sidenav').sidenav();
   hideMainloader();
-  setFirebase();
+  checkCurrentUser();
   setInterface();
 });
 function setInterface(){
@@ -12,25 +12,30 @@ function setInterface(){
   $('#login-btn').click(function(){
     var userid = $('#userid').val().trim();
     var userpw = $('#userpw').val().trim();
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(function(){
+      return signIn(userid,userpw)
+    })
 
     if (  validationCheck(userid, userpw) ){
       showMainloader();
-      firebase.auth().signInWithEmailAndPassword(userid,userpw).then(function(){
-        console.log('들어오나');
-         hideMainloader();
-         setFirebase();
-      }).catch(function(error) {
-        hideMainloader();
-        fireswal('ERROR!', '아이디와 비밀번호를 다시 확인해 주세요.','error','OK')
-        console.log(error)
-      });
+
     }else {
-        showMainloader();
-        fireswal('ERROR!', 'fail to validation check','error','OK')
+      hideMainloader();
+      fireswal('ERROR!', 'fail to validation check','error','OK')
 
     }
 
   })
+}
+function signIn(email,password){
+  return firebase.auth().signInWithEmailAndPassword(email,password).then(function(){
+    checkCurrentUser();
+    hideMainloader();
+  }).catch(function(error) {
+    hideMainloader();
+    fireswal('ERROR!', '아이디와 비밀번호를 다시 확인해 주세요.','error','OK')
+    console.log(error)
+  });
 }
 
 function fireswal(title,text,type,confirmButtonText){
@@ -42,30 +47,44 @@ function fireswal(title,text,type,confirmButtonText){
   });
 }
 
-function setFirebase(){
+function checkCurrentUser(){
 
   var user = firebase.auth().currentUser;
- hideMainloader();
   if (user) {
-    // setUserToFirebase(user)
-    getUserAuth(user);
-    console.log(user)
-    // pagemove('manageinst.html');
+    var _getUserAuth = function (u){
+      return new Promise(function (resolve, reject){
+        getUserAuth(u,resolve,reject);
+      })
+    }
+    _getUserAuth(user).then(function(result){
+      console.log('success',result)
+      result ? pagemove('pages/pageLayout.html') : fireswal('Error','관리자 권한으로 로그인 해 주세요','error', 'OK');
+    }).catch(function(error){
+      console.log(error)
+    })
   } else {
     console.log('no signed user')
   }
 
 }
 
-function getUserAuth(user){
+function getUserAuth(user,resolve,reject){
   db = firebase.firestore();
   var authRef = db.collection("users");
   var query = authRef.where("email", "==", user.email);
-  query.get().then(function(doc){
-    console.log(doc.data())
+  var result;
+  query.get().then(function(snapshot){
+    snapshot.docs.forEach(function(doc){
+      var data = doc.data()
+      result  = (data.auth == "admin" ) ?  true :  false
+      resolve(result)
+    })
   }).catch(function(error){
-    console.log("error",error)
-  })
+    result = false
+    console.log(error)
+    reject(false)
+  });
+
 
 
 }
@@ -77,13 +96,13 @@ function setUserToFirebase(user){
     uid: user.uid,
     email: user.email,
     auth: 'admin'
-})
-.then(function(docRef) {
+  })
+  .then(function(docRef) {
     console.log("Document written with ID: ", docRef);
-})
-.catch(function(error) {
+  })
+  .catch(function(error) {
     console.error("Error adding document: ", error);
-});
+  });
 }
 
 function validationCheck(userid, userpw){
@@ -93,28 +112,29 @@ function validationCheck(userid, userpw){
   }
   if (userpw == '') {
     fireswal('Error!','비밀번호를 입력해주세요','error','OK')
-    return false;}
-    return true;
+    return false;
   }
+  return true;
+}
 
 
-  var pagemove = function(target) {
-    var pagePath = $(location).attr("pathname");
+var pagemove = function(target) {
+  var pagePath = $(location).attr("pathname");
+  
+  var path
 
-    var path
-
-    if (pagePath == '/index.html' || pagePath =='/') {
-      path = 'pages/' + target
-    } else {
-      path = target
-    }
-    window.location = path;
-
+  if (pagePath == '/index.html' || pagePath =='/') {
+    path = 'pages/' + target
+  } else {
+    path = target
   }
+  window.location = path;
 
-  function showMainloader(){
-    $('.main-loader').show();
-  }
-  function hideMainloader(){
-    $('.main-loader').hide();
-  }
+}
+
+function showMainloader(){
+  $('.main-loader').show();
+}
+function hideMainloader(){
+  $('.main-loader').hide();
+}

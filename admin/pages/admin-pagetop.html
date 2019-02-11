@@ -5,14 +5,15 @@
 </div>
  <ul id="slide-out" class="sidenav">
 	 <li><div class="user-view">
-		 <a href="#user"><img class="circle" src=""></a>
-		 <a href="#name"><span class="ame">John Doe</span></a>
-		 <a href="#email"><span class="email">jdandturk@gmail.com</span></a>
+		 <a href="#user"><img class="user-image" src=""></a>
+		 <a href="#name"><span class="user-name"></span></a>
+		 <a href="#email"><span class="user-email"></span></a>
 	 </div></li>
 	 <li><div class="divider"></div></li>
     <li><a class="menu-instructor">강사추가</a></li>
     <li><a class="menu-popup">팝업추가</a></li>
     <li><a class="menu-price">다이빙 비용 관리</a></li>
+		  <li><a class="menu-logout btn">로그아웃</a></li>
 	</ul>
 </nav>
 <script>
@@ -25,15 +26,7 @@
 		constrainWidth : false
 	});
 	$('.collapsible').collapsible();
-	$('.menu-instructor').click(function() {
-    pagemove('instructor.html')
-	});
-	$('.menu-popup').click(function(){
-		pagemove('fundive.html')
-	});
-	$('.menu-price').click(function(){
-		pagemove('price.html')
-	});
+
 
 	var pagemove = function(target) {
 		var pagePath = $(location).attr("pathname");
