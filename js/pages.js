@@ -13,7 +13,8 @@ function setInterface(){
       $(this).attr('href','https://open.kakao.com/o/spvWI4cb');
     })
   });
-	 $('.carousel.carousel-slider').carousel({
+  
+	 $('.carousel').carousel({
 		    fullWidth: true,
 		    indicators: true
 		  });
@@ -22,6 +23,9 @@ function setInterface(){
 	 $('table').addClass('centered');
 
 
+   // $('.carousel').carousel();
+
+setInterval(function(){ $('.carousel').carousel('next');}, 4000);
 
 
 }
